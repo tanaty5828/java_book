@@ -1,5 +1,9 @@
 package com.example;
 
+import com.example.A.ABuilder;
+import com.example.B.BBuilder;
+import com.example.C.CBuilder;
+
 import org.apache.commons.math3.stat.inference.GTest;
 
 import junit.framework.TestCase;
@@ -23,6 +27,14 @@ public class AppTest
         item.setC(C.builder().amount(createAmount(100)).build());
     }
 
+    public void example3(){
+        Item item = new Item();
+        item.setA(buildA(100).build());
+        item.setB(buildB(100).build());
+        item.setC(buildC(100).build());
+    }
+
+
     public static A createA(Integer amount) {
         return A.builder().amount(amount).build();
     }
@@ -37,5 +49,17 @@ public class AppTest
 
     private Integer createAmount(Integer amount) {
         return amount;
+    }
+
+    private ABuilder buildA(Integer amount) {
+        return A.builder().amount(amount);
+    }
+
+    private BBuilder buildB(Integer amount) {
+        return B.builder().amount(amount);
+    }
+
+    private CBuilder buildC(Integer amount) {
+        return C.builder().amount(amount);
     }
 }
